@@ -5,15 +5,22 @@ class Program
     static void Main(string[] args)
     {
         List<int> inputs = new List<int>();
-        int userInput = 1;
+        int userInput;
         int sum = 0;
         Console.WriteLine("Enter a list of numbers, type 0 when finished");
-        while (userInput != 0)
+
+
+
+        do
         {
             Console.Write("Number: ");
             userInput = int.Parse(Console.ReadLine());
             inputs.Add(userInput);
-        }
+        } while (userInput != 0);
+
+
+
+
         int largest = inputs[0];
         for (int i = 0; i < inputs.Count; i++)
         {
