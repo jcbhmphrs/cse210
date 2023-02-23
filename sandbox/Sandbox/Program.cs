@@ -11,5 +11,6 @@ class Program
         Random randomGenerator = new Random();
         int randNumber = randomGenerator.Next(6,z);
         Console.WriteLine(randNumber);
+        
     }
 }
