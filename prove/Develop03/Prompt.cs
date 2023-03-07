@@ -1,98 +1,42 @@
 using System;
-
 public class Prompt
 {
-    private string[] _splitScripture;
     private static Library _newLibrary = new Library();
-    private static Scripture _newScript = new Scripture();
+    private static Scripture _scripture;
     private static Random random = new Random();
-    private static List<int> hiddenIndices = new List<int>();
-    private static int totalWords = 0;
-
-
-    public string[] SetSplitVerse()
+    public Prompt(string reference)
     {
-        return _newScript.GetVerse().Split(" ");
+        _scripture = new Scripture(reference);
     }
-    public void setScripture()
+    public Prompt()
+    {
+        _scripture = new Scripture();
+    }
+    public void setRandomScripture()
     {
         int position = random.Next(1, _newLibrary.GetEntryCount());
-        _newScript.SetReference(_newLibrary.GetEntry(position).Split("|")[0]);
-        _newScript.SetVerse(_newLibrary.GetEntry(position).Split("|")[1]);
+        _scripture.SetReference(_newLibrary.GetEntry(position).Split("|")[0]);
+        _scripture.SetVerse(_newLibrary.GetEntry(position).Split("|")[1]);
     }
-
-
-    public void setTotalWords()
-    {
-        string[] splitVerse = _newScript.GetVerse().Split(" ");
-        totalWords = splitVerse.Count();
-    }
-    public int getTotalWords()
-    {
-        return totalWords;
-    }
-
-
-
-
-
-    public int getHiddenWordsCount()
-    {
-        return hiddenIndices.Count();
-    }
-
     public void Show()
     {
-        Console.WriteLine(_newScript.GetReference());
-        Console.WriteLine(_newScript.GetVerse());
-        Console.WriteLine("");
+        _scripture.Show();
     }
-
     public void HideWords(int frequency)
     {
-        string[] splitVerse = _newScript.GetVerse().Split(" ");
-
-        for (int i = 0; i < frequency; i++)
+        int wordsHidden = 0;
+        do
         {
-            int index = random.Next(splitVerse.Count());
-            if (!splitVerse[index].Contains("_"))
+            int index = random.Next(_scripture.GetWords().Count());
+            if (_scripture.GetWords()[index].GetVisible())
             {
-                string currentWord = splitVerse[index];
-                string emptySpace = "";
-
-                foreach (char letter in currentWord)
-                {
-                    emptySpace += "_";
-                }
-                splitVerse[index] =
-                currentWord.EndsWith(".") ? emptySpace = emptySpace.Remove(0, 1) + "." :
-                currentWord.EndsWith(",") ? emptySpace = emptySpace.Remove(0, 1) + "," :
-                currentWord.EndsWith(":") ? emptySpace = emptySpace.Remove(0, 1) + ":" :
-                currentWord.EndsWith(";") ? emptySpace = emptySpace.Remove(0, 1) + ";" :
-                emptySpace;
-
-                hiddenIndices.Add(index);
-                _newScript.SetVerse("");
-                foreach (string word in splitVerse)
-                {
-                    string newWords = _newScript.GetVerse(); 
-                    _newScript.SetVerse($"{newWords} {word}");
-                }
+                _scripture.GetWords()[index].Hide();
+                wordsHidden++;
             }
-            else
-            {
-                index = random.Next(splitVerse.Count() - 1);
-                frequency++;
-            }
-        }
-
-
-
+        } while (!_scripture.Hidden() && wordsHidden != frequency);
     }
-
-
-
-
+    public bool GetScriptureVisability()
+    {
+        return _scripture.Hidden();
+    }
 }
-
-
