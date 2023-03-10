@@ -26,7 +26,7 @@ class Program
                     case "display":
                         newJournal.Show();
                         break;
-                    case "save":
+                    case "save as":
                         newJournal.SaveFile();
                         break;
                     default:
