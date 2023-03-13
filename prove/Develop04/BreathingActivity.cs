@@ -1,6 +1,6 @@
 internal class BreathingActivity : Activity
 {
-    public BreathingActivity() : base("Breathing Activity", "This will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.") { }
+    public BreathingActivity() : base("Breathing Activity", "Breathing Description") { }
     public void StartActivity()
     {
         Welcome();
@@ -24,3 +24,6 @@ internal class BreathingActivity : Activity
         Console.CursorVisible = true;
     }
 }
+
+
+
