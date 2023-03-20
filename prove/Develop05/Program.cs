@@ -1,136 +1,47 @@
-using System;
-
+using System.IO;
 class Program
 {
-
     static void Main(string[] args)
     {
-        void StartUpAnimation()
+        Animation loadingAnimation = new Animation();
+        loadingAnimation.Run(250, 100, 15);
+        void EditorMenu()
         {
-            Console.CursorVisible = false;
-            double loadingPercent = 0;
-            Random random = new Random();
-            int percentageJump;
-            string loadingProgress = new string('|', Convert.ToInt32(loadingPercent / 1.428)); ;
-            int AnimationStartingLine = Console.CursorTop;
-            while (loadingPercent < 100)
+            Console.Clear();
+            GoalManager goalManager = new GoalManager();
+            bool userContinue = true;
+            while (userContinue)
             {
-                string[] frames = { $"""                                                                              
-                                              _                                                                       
-                                             | |                                          _                         
-            o  o          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_         o  o        
-                 o       / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)             o      
-                        ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_                     
-                         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)                   
-                        (_____|                                 |_|                                              
-                                                                                                                      
-                                                  loading.                                                                            
-                        {loadingProgress} {loadingPercent}% 
-
-        """, $"""                                                                                                    
-                                              _                                                                      
-                                             | |                                          _                          
-               o          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_            o         
-                 o       / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)             o       
-                 o      ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_              o       
-                         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)                     
-                        (_____|                                 |_|                                                
-                                                                                                                      
-                                                  loading.                                                                             
-                        {loadingProgress} {loadingPercent}%   
-
-        """, $"""                                                                                                  
-                                              _                                                                    
-                                             | |                                          _                        
-                          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_                      
-                 o       / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)             o       
-                 o      ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_              o       
-               o         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)           o         
-                        (_____|                                 |_|                                               
-                                                                                                                      
-                                                  loading..                                                                             
-                        {loadingProgress} {loadingPercent}%   
-
-        """, $"""                                                                                                 
-                                              _                                                                   
-                                             | |                                          _                       
-                          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_                   
-                         / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)                      
-                 o      ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_              o        
-            o  o         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)        o  o          
-                        (_____|                                 |_|                                                 
-                                                                                                                      
-                                                  loading..                                                                               
-                        {loadingProgress} {loadingPercent}%  
-
-        """, $"""                                                                                                   
-                                              _                                                                     
-                                             | |                                          _                         
-                          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_                       
-                         / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)                       
-          o             ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_       o                
-            o  o         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)        o  o           
-                        (_____|                                 |_|                                                  
-                                                                                                                      
-                                                  loading...                                                                                
-                        {loadingProgress} {loadingPercent}%   
-
-        """, $"""                                                                                                    
-                                              _                                                                        
-                                             | |                                          _                            
-                          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_                          
-          o              / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)      o                  
-          o             ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_       o                  
-            o            \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)        o                
-                        (_____|                                 |_|                                                    
-                                                                                                                      
-                                                  loading...                                                                                  
-                        {loadingProgress} {loadingPercent}%  
-
-        """, $"""                                                                                                      
-                                              _                                                                        
-                                             | |                                          _                            
-            o             ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_         o                
-          o              / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)      o                  
-          o             ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_       o                  
-                         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)                         
-                        (_____|                                 |_|                                                    
-                                                                                                                      
-                                                  loading                                                                                  
-                        {loadingProgress} {loadingPercent}%   
-
-        """, $"""                                                                                                      
-                                              _                                                                        
-                                             | |                                          _                            
-            o  o          ____   ___   _____ | |    _____     ____  _   _  _____   ___  _| |_         o  o             
-          o              / _  | / _ \ (____ || |   (_____)   / _  || | | || ___ | /___)(_   _)      o                  
-                        ( (_| || |_| |/ ___ || |            | |_| || |_| || ____||___ |  | |_                          
-                         \___ | \___/ \_____| \_)            \__  ||____/ |_____)(___/    \__)                         
-                        (_____|                                 |_|                                                    
-                                                                                                                      
-                                                  loading                                                                                  
-                        {loadingProgress} {loadingPercent}%  
-
-        """ };
-
-                foreach (string frame in frames)
+                Console.WriteLine($"$ {goalManager.Wallet}\n");
+                Options.OptionDisplay(Options._editor);
+                switch (Console.ReadLine().ToLower())
                 {
-                    Console.Write(frame.TrimEnd());
-                    Thread.Sleep(75);
-                    percentageJump = random.Next(1, 80);
-                    if (percentageJump < 6)
-                    {
-                        loadingPercent += percentageJump;
-                        loadingProgress = new string('|', Convert.ToInt32(loadingPercent / 1.428));
-                        Console.Beep(600,200);
-                    }
-                    Console.SetCursorPosition(0, AnimationStartingLine);
+                    case "quit":
+                        userContinue = false;
+                        break;
+                    case "load goal file":
+                        goalManager.LoadFromCSV();
+                        break;
+                    case "add new goal":
+                        goalManager.AddGoal();
+                        break;
+                    case "complete a goal":
+                        goalManager.CompleteGoal();
+                        break;
+                    case "save goals":
+                        goalManager.SaveGoals();
+                        break;
+                    case "view all goals":
+                        goalManager.ShowGoals();
+                        break;
+                    default:
+                        Console.Write("Not a valid input.\nPress any key to Continue...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
                 }
-
             }
-            Console.CursorVisible = true;
         }
-        StartUpAnimation();
+        EditorMenu();
     }
-
 }

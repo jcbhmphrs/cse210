@@ -55,7 +55,7 @@ class Program
             {
                 Console.Clear();
                 Console.WriteLine("Welcome to the Journal Program");
-                Console.WriteLine("Please select one of the following choises:");
+                Console.WriteLine("Please select one of the following choices:");
                 Console.WriteLine("- New");
                 Console.WriteLine("- Open");
                 Console.WriteLine("- Quit");
