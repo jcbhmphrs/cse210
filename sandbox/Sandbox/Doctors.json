@@ -1,0 +1,51 @@
+[  
+  {  
+    "NameFirst": "John",  
+    "NameLast": "Hancey",  
+    "ID": 461379,  
+    "SecurityLevel": 3,
+    "EmployeeType": "Doctor"  
+  },  
+  {  
+    "NameFirst": "Joe",  
+    "NameLast": "Smith",  
+    "ID": 256875,  
+    "SecurityLevel": 5,
+    "EmployeeType": "Doctor"  
+  },
+  {  
+    "NameFirst": "Jim",  
+    "NameLast": "Halpert",  
+    "ID": 984523,  
+    "SecurityLevel": 4,
+    "EmployeeType": "Doctor"  
+  },
+  {  
+    "NameFirst": "James",  
+    "NameLast": "Monroe",  
+    "ID": 124586,  
+    "SecurityLevel": 5,
+    "EmployeeType": "Doctor"  
+  },
+  {  
+    "NameFirst": "Jose",  
+    "NameLast": "Rodriguez",  
+    "ID": 365871,  
+    "SecurityLevel": 3,
+    "EmployeeType": "Doctor"  
+  },
+  {  
+    "NameFirst": "Jake",  
+    "NameLast": "Rodman",  
+    "ID": 325891,  
+    "SecurityLevel": 2,
+    "EmployeeType": "Doctor"  
+  },
+  {  
+    "NameFirst": "Jeremy",  
+    "NameLast": "Blooming",  
+    "ID": 121245,  
+    "SecurityLevel": 2,
+    "EmployeeType": "Doctor"  
+  }
+]
