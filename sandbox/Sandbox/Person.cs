@@ -1,14 +1,15 @@
 internal abstract class Person
 {
-    public Person(string nameFirst, string nameLast, int id, DateTime inTime)
+    public Person(string nameFirst, string nameLast, int id = 0)
     {
         NameFirst = nameFirst;
         NameLast = nameLast;
-        int ID = id;
+        ID = id;
     }
-    protected string NameFirst { get; set; }
-    protected string NameLast { get; set; }
     public int ID { get; set; }
+    public string NameFirst { get; set; }
+    public string NameLast { get; set; }
     protected DateTime inTime = DateTime.Now;
+    protected string InTime {get => inTime.ToString("MM/dd/yy HH:mm:ss");}
     public abstract string LookUp();
 }

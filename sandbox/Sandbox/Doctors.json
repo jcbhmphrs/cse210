@@ -1,51 +1,92 @@
 [  
   {  
+    "EmployeeType": "Doctor",  
     "NameFirst": "John",  
     "NameLast": "Hancey",  
     "ID": 461379,  
-    "SecurityLevel": 3,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 3
   },  
   {  
+    "EmployeeType": "Doctor",  
     "NameFirst": "Joe",  
     "NameLast": "Smith",  
     "ID": 256875,  
-    "SecurityLevel": 5,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 5
   },
   {  
+    "EmployeeType": "Doctor",  
     "NameFirst": "Jim",  
     "NameLast": "Halpert",  
     "ID": 984523,  
-    "SecurityLevel": 4,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 4
   },
   {  
+    "EmployeeType": "Doctor",  
     "NameFirst": "James",  
     "NameLast": "Monroe",  
     "ID": 124586,  
-    "SecurityLevel": 5,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 5
   },
-  {  
+  { 
+    "EmployeeType": "Doctor",  
     "NameFirst": "Jose",  
     "NameLast": "Rodriguez",  
     "ID": 365871,  
-    "SecurityLevel": 3,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 3
   },
   {  
+    "EmployeeType": "Doctor",  
     "NameFirst": "Jake",  
     "NameLast": "Rodman",  
     "ID": 325891,  
-    "SecurityLevel": 2,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 2
   },
   {  
+    "EmployeeType": "Doctor",  
     "NameFirst": "Jeremy",  
     "NameLast": "Blooming",  
     "ID": 121245,  
-    "SecurityLevel": 2,
-    "EmployeeType": "Doctor"  
+    "SecurityLevel": 2
   }
 ]
+
+
+
+private static List<Employee> staff = GenerateStaff();
+private static List<Employee> GenerateStaff()
+{
+
+    //doctors
+    Doctor doctor0 = new Doctor("Derek", "Shepard", 125689, 5, "Doctor");
+    Doctor doctor1 = new Doctor("Gregory", "House", 125874, 4, "Doctor");
+    Doctor doctor2 = new Doctor("Addison", "Montgomery", 196859, 1, "Doctor");
+    Doctor doctor3 = new Doctor("Stephen", "Strange", 145699, 5, "Doctor");
+    Doctor doctor4 = new Doctor("Richard", "Kimball", 101055, 5, "Doctor");
+
+    //janitors
+    Janitor janitor0 = new Janitor("Susan", "McSqueaky", 158457, 2, "Janitor", "Main Floor");
+    Janitor janitor5 = new Janitor("Gabrielle", "Cortesa", 139845, 2, "Janitor", "Second Floor");
+    Janitor janitor1 = new Janitor("Mario", "Lucherinni", 124598, 2, "Janitor", "Main Floor");
+    Janitor janitor3 = new Janitor("Kal", "Stoney", 147154, 2, "Janitor", "Second Floor");
+    Janitor janitor4 = new Janitor("Bob", "Harley", 115266, 2, "Janitor", "Second Floor");
+    Janitor janitor2 = new Janitor("Michelle", "Jackson", 156842, 2, "Janitor", "Main Floor");
+
+    //nurses
+    Nurse nurse0 = new Nurse("Newl", "Gilbard", 125648, 1, "Nurse", false);
+    Nurse nurse1 = new Nurse("Sally", "Gilbard", 147259, 1, "Nurse", false);
+    Nurse nurse2 = new Nurse("Tiffani", "Gilbard", 123684, 4, "Nurse", true);
+    Nurse nurse3 = new Nurse("Max", "Stuffem", 122568, 4, "Nurse", true);
+    Nurse nurse4 = new Nurse("Stanford", "Pines", 159896, 4, "Nurse", true);
+    Nurse nurse5 = new Nurse("Hal", "Guthrey", 135635, 3, "Nurse", false);
+    Nurse nurse6 = new Nurse("Lacey", "Crossbourne", 111214, 4, "Nurse", true);
+    Nurse nurse7 = new Nurse("Pierce", "Hudley", 102103, 2, "Nurse", false);
+    Nurse nurse8 = new Nurse("Hilbert", "Curves", 140562, 4, "Nurse", true);
+    Nurse nurse9 = new Nurse("Haley", "Wilkinson", 177677, 3, "Nurse", true);
+
+    List<Employee> employees = new List<Employee>()
+    {doctor0, doctor1, doctor2, doctor3, doctor4,
+    janitor0, janitor5, janitor1, janitor3, janitor4, janitor2,
+    nurse0, nurse1, nurse2, nurse3, nurse4, nurse5, nurse6, nurse7, nurse8, nurse9};
+
+    return employees;
+}

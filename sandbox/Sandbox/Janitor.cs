@@ -1,13 +1,10 @@
 internal class Janitor : Employee
 {
-    public Janitor(string nameFirst, string nameLast, int id, DateTime inTime, int securityLevel, string employeeType, string contractor) : base(nameFirst, nameLast, id, inTime, securityLevel, employeeType)
+    public Janitor(string nameFirst, string nameLast, int id, int securityLevel, string employeeType, string assignedFloor) : base(nameFirst, nameLast, id, securityLevel, employeeType)
     {
-        Contractor = contractor;
+        AssignedFloor = assignedFloor;
     }
-    private string Contractor { get; set; }
+    private string AssignedFloor { get; set; }
 
-    public override string LookUp()
-    {
-        throw new NotImplementedException();
-    }
+    public override string LookUp() => $"{EmployeeType}: {NameFirst} {NameLast} In Time:{InTime} #{ID} Clearance - {SecurityLevel}. flr ({AssignedFloor})";
 }
